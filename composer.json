@@ -1,0 +1,12 @@
+{
+    "name": "mkrawczyk/configurable-wysiwyg",
+    "description": "Backend for Wysiwyg editor that can be configured and can be converted to any format",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Mkrawczyk\\ConfigurableWysiwyg\\": "src/"
+        }
+    },
+    "require": {}
+}
