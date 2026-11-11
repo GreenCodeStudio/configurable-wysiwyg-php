@@ -18,7 +18,7 @@ class ToPlaintextConverter
         return implode("\n", $ret);
     }
 
-    private function convertNode($node)
+    public function convertNode($node)
     {
         if ($node instanceof \Dom\Element) {
             $ns = $node->namespaceURI;
