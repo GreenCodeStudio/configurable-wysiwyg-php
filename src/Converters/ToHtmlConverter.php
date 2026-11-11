@@ -24,12 +24,11 @@ class ToHtmlConverter
                 $bodyElement->appendChild($convertedNode);
             }
         }
-        foreach ($source->firstElementChild->childNodes as $child) {
-            $importedNode = $htmlDom->importNode($child, true);
-            $bodyElement->appendChild($importedNode);
+        $ret = [];
+        foreach ($bodyElement->childNodes as $child) {
+            $ret[] = $htmlDom->saveHtml($child);
         }
-
-        return $htmlDom->saveHtml($bodyElement);
+        return implode("\n", $ret);
     }
 
     private function convertNode($node, $htmlDocument)

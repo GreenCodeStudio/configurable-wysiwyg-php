@@ -32,7 +32,7 @@ class Document
     {
         if ($sourceNode instanceof \Dom\Element) {
             if ($this->config->isElementAllowed($sourceNode->namespaceURI, $sourceNode->tagName)) {
-                $element = $targetDocument->createElement($sourceNode->tagName);
+                $element = $targetDocument->createElementNS($sourceNode->namespaceURI, $sourceNode->tagName);
                 foreach ($sourceNode->attributes as $attr) {
                     $element->setAttribute($attr->name, $attr->value);
                 }
