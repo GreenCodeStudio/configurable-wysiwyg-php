@@ -17,12 +17,14 @@ class Document
     public function getCleanDom()
     {
         $cleanDom = \Dom\XMLDocument::createEmpty();
-        foreach ($this->domDocument->childNodes as $child) {
+        $cleanDocument= $cleanDom->createElementNS('https://raw.githubusercontent.com/GreenCodeStudio/configurable-wysiwyg/refs/heads/master/schema.xsd', 'document');
+        foreach ($this->domDocument->firstElementChild->childNodes as $child) {
             $cleanChildren = $this->cleanNode($cleanDom, $child);
             foreach ($cleanChildren as $cleanChild) {
-                $cleanDom->appendChild($cleanChild);
+                $cleanDocument->appendChild($cleanChild);
             }
         }
+        $cleanDom->appendChild($cleanDocument);
         return $cleanDom;
     }
 
