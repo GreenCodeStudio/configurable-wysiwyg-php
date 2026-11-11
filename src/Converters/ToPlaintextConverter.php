@@ -35,9 +35,14 @@ class ToPlaintextConverter
             return '';
         }
     }
+
+    public static function register(string $ns, string $tagName, callable $converter)
+    {
+        self::$converters[$ns][$tagName] = $converter;
+    }
 }
 
-ToHtmlConverter::register('https://raw.githubusercontent.com/GreenCodeStudio/configurable-wysiwyg/refs/heads/master/schema.xsd', 'paragraph', function ($element, $converter) {
+ToPlaintextConverter::register('https://raw.githubusercontent.com/GreenCodeStudio/configurable-wysiwyg/refs/heads/master/schema.xsd', 'paragraph', function ($element, $converter) {
     $ret = '';
     foreach ($element->childNodes as $child) {
         $ret .= $converter->convertNode($child);
